@@ -1,0 +1,16 @@
+report_safe 1
+lock_method flock
+required_score 5.0
+use_bayes 1
+bayes_auto_learn 1
+
+
+#################
+####[ SPFBL ]####
+#################
+
+loadplugin SPFBL /etc/spamassassin/SPFBL.pm
+
+header RUN_SPFBL eval:spfbl_check()
+add_header all Received-SPFBL _SPFBLSENTENCE_
+add_header all Received-SPFBL-Desc _SPFBLSENTENCEDESC_
